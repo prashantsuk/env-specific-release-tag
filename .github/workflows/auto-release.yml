@@ -20,7 +20,7 @@ jobs:
         with:
           fetch-tags: true
           fetch-depth: 0
-          token: ${{ secrets.RELEASE_TOKEN }}  # Use PAT instead of GITHUB_TOKEN
+          token: ${{ secrets.FINE_GRAINED_PAT }}  # Use PAT instead of GITHUB_TOKEN
 
       - name: Fetch all tags
         run: |
@@ -28,7 +28,7 @@ jobs:
 
       - name: Create Release
         env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}  # Use PAT here too
+          GITHUB_TOKEN: ${{ secrets.FINE_GRAINED_PAT }}  # Use PAT here too
         run: |
           # Check environment and set version prefix
           ENVIRONMENT="${{ inputs.target-environment || github.event.inputs.target-environment || 'dev' }}"
